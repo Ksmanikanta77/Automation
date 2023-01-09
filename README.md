@@ -6,7 +6,7 @@ sudo apt-get update
 
 server= dpkg --get-selections apache2 | awk '{print $2}'
 
-if [[ server == $install ]]
+if [[ ${server} == install ]]
 then
        echo "Apache 2 is already installed"
 else
@@ -17,7 +17,7 @@ fi
 
 status=sudo systemctl status apache2 | grep running | awk '{print $3}' | tr -d '()'
 
-if [[ $status == running ]]
+if [[ ${status} == running ]]
 then
         echo "Server is running"
 else
