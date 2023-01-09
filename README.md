@@ -4,7 +4,7 @@ sudo apt-get update
 
 #checking apache server
 
-server= dpkg --get-selections apache2 | awk '{print $2}'
+server= $(dpkg --get-selections apache2 | awk '{print $2}')
 
 if [[ ${server} == install ]]
 then
@@ -15,7 +15,7 @@ fi
 
 #checking running status
 
-status=sudo systemctl status apache2 | grep running | awk '{print $3}' | tr -d '()'
+status=$(sudo systemctl status apache2 | grep running | awk '{print $3}' | tr -d '()')
 
 if [[ ${status} == running ]]
 then
